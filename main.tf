@@ -60,7 +60,6 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "default" {
   }
 }
 
-
 # Versioning is a means of keeping multiple variants of an object in the same bucket.
 # Versioning-enabled buckets enable you to recover objects from accidental deletion or overwrite.
 #
