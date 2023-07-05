@@ -31,8 +31,18 @@ resource "aws_s3_bucket_policy" "default" {
 # S3 access control lists (ACLs) enable you to manage access to buckets and objects.
 # https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html
 resource "aws_s3_bucket_acl" "default" {
+  depends_on = [aws_s3_bucket_ownership_controls.default]
+
   bucket = aws_s3_bucket.default.id
   acl    = "private"
+}
+
+resource "aws_s3_bucket_ownership_controls" "default" {
+  bucket = aws_s3_bucket.default.id
+
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
 }
 
 # Server access logging provides detailed records for the requests that are made to a bucket.
