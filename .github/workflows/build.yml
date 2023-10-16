@@ -9,7 +9,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v2
 
       - name: Terraform fmt
@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         fetch-depth: '0'
     - name: Bump version and push tag
